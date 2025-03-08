@@ -1,13 +1,14 @@
+import env from './../helpers/env';
 import mongoose from 'mongoose';
 
 export default () => {
-  const mongoString = 'mongodb://localhost:27017/test';
-
-  mongoose.connect(mongoString, {}, (error: any) => {
+  mongoose.set('strictQuery', true).connect(env.db.DATABASE_URL, {}, (error: any) => {
     if (error) {
+      console.error('❌ [server]: Database connection failed:', error);
       console.log(error);
+      process.exit(0);
     } else {
-      console.log('Database Connected');
+      console.log(`⚡️ [server]: Database is connected!`);
     }
   });
 };
