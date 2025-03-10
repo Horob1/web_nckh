@@ -1,15 +1,19 @@
-// const router = createBrowserRouter([
-//   {
-//     path: "/",
-//     element: <Layout />, // Layout bao quanh các trang
-//     children: [
-//       { index: true, element: <Home /> },
-//       { path: "about", element: <About /> },
-//       { path: "*", element: <NotFound /> }, // Route 404
-//     ],
-//   },
-// ]);
+import { MainLayout } from "@/layouts";
+import { Home, NotFound } from "@/pages";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
-// export default function AppRouter() {
-//   return <RouterProvider router={router} />;
-// }
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <MainLayout />, // Layout bao quanh các trang
+    children: [
+      { index: true, element: <Home /> },
+      // { path: "about", element: <About /> },
+      { path: "*", element: <NotFound /> }, // Route 404
+    ],
+  },
+]);
+
+export default function AppRouter() {
+  return <RouterProvider router={router} />;
+}
