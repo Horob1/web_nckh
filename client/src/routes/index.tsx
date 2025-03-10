@@ -1,5 +1,5 @@
-import { MainLayout } from "@/layouts";
-import { Home, NotFound } from "@/pages";
+import { AuthLayout, MainLayout } from "@/layouts";
+import { Home, Login, NotFound } from "@/pages";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
 const router = createBrowserRouter([
@@ -11,6 +11,11 @@ const router = createBrowserRouter([
       // { path: "about", element: <About /> },
       { path: "*", element: <NotFound /> }, // Route 404
     ],
+  },
+  {
+    path: "/auth",
+    element: <AuthLayout />,
+    children: [{ index: true, element: <Login /> }],
   },
 ]);
 
